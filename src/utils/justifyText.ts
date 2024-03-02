@@ -1,18 +1,31 @@
-export function justifyText(text: string, lineLength: number): string {
-  const words = text.split(' ');
-  const lines: string[] = [];
-  let currentLine = '';
+export function justifyText(text: string): string {
+    const lineWidth = 80; 
+    const words = text.split(' ');
+    let line = '';
+    let result = '';
 
-  for (const word of words) {
-      if ((currentLine + word).length <= lineLength) {
-          currentLine += ` ${word}`;
-      } else {
-          lines.push(currentLine.trim());
-          currentLine = word;
-      }
-  }
+    for (let i = 0; i < words.length; i++) {
+        if (line.length + words[i].length > lineWidth) {
+            let spacesToAdd = lineWidth - line.length;
+            let spacePositions = line.length - line.replace(/ /g, '').length;
 
-  lines.push(currentLine.trim());
+            while (spacesToAdd > 0 && spacePositions > 0) {
+                line = line.replace(/(\s)(\S+)$/, '  $2');
+                spacesToAdd--;
+                spacePositions--;
+            }
 
-  return lines.join('\n');
+            result += line + '\n';
+            line = '';
+        }
+
+        if (line !== '') {
+            line += ' ';
+        }
+
+        line += words[i];
+    }
+
+    result += line;
+    return result;
 }
