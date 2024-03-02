@@ -24,4 +24,6 @@ export const createUser = (values: Record<string, any>) => new UserModel(values)
 export const deleteUserById = (id: string) => UserModel.findOneAndDelete({ _id: id });
 export const updateUserById = (id: string, values: Record<string, any>) => UserModel.findByIdAndUpdate(id, values);
 export const getUserWordCount = (id: string) => UserModel.findById(id).select('wordCount');
-export const updateWordCountById = (id: string, wordCount: number) => UserModel.findByIdAndUpdate(id, { wordCount });
+export const updateUserWordCountById = (id: string, wordCount: number) => {
+  return UserModel.findByIdAndUpdate(id, { wordCount: wordCount });
+};
