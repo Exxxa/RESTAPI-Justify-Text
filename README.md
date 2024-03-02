@@ -62,13 +62,25 @@ All query were made using PostMan
 ### Authentication
 
 - `POST /auth/register`: Obtain a account
-    Exemple of json query
+- Exemple of json query `{
+    "email":"jhon.jhon@hotmail.fr",
+    "password":"12345",
+    "username":"jhon"
+}`
 - `POST /auth/login` : Log in into an existing account
+- Exemple of json query `{
+    "email":"jhon.jhon@hotmail.fr",
+    "password":"12345",
+}`
 
 ### Justify Text
 
 - `POST /api/justify`: Justify text by sending the text in the request body. Requires authentication token. 
 
+- Example of json query `{
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis eros id ex ultricies, nec malesuada arcu finibus. Ut vulputate malesuada libero, eu pretium velit consectetur et. Nullam in ultricies nulla. Nullam nec sodales sem, quis fringilla leo. Sed tempor dolor quis dolor blandit, quis scelerisque magna finibus. Vivamus sed velit ut purus vulputate iaculis. Nulla lobortis eros vitae augue laoreet, nec rutrum justo cursus. Sed vestibulum blandit fermentum. Sed aliquet erat id arcu pharetra congue. Donec non vestibulum ligula. In feugiat, lacus nec efficitur posuere, mauris nisl tristique est, a interdum felis elit id tortor."
+  }`
+  
 ## Usage
 
 1. Obtain a token by sending your email to `/api/token`.

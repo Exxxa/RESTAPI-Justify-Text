@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { justifyText } from '../utils/justifyText';
 import { countWords } from '../utils/wordCounter';
-import { getUserById, getUserBySessionToken, getUserWordCount, updateUserWordCountById } from '../db/users';
+import { getUserBySessionToken, getUserWordCount, updateUserWordCountById } from '../db/users';
 
 export const justifyTextHandler = async (req: Request, res: Response) => {
     try {
@@ -28,7 +28,6 @@ export const justifyTextHandler = async (req: Request, res: Response) => {
         }
 
         //Update the word count for the user
-        await updateUserWordCountById(id, totalWordCount);
 
         // If word count is within limit, justify the text
         const justifiedText = justifyText(text);
